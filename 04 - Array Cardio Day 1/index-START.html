@@ -38,20 +38,56 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-    const inventersFiltered = inventors.filter(() =>{
+    const inventersFiltered = inventors.filter((person) =>{
+      if(person.year >= 1500 && person.year < 1600 ){
+        return true;
+      }
+    });
 
-    })
+    console.log(inventersFiltered);
 
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    const inventorNamesMapped = inventors.map((inventor) => {
+      return [inventor.first,inventor.last];
+    }
+    );
+
+    console.log(inventorNamesMapped);
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    const oldToYoungBDay = inventors;
+    oldToYoungBDay.sort((a,b) => {
+      return a.year - b.year;
+    });
+
+    console.log(oldToYoungBDay);
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    //compute the age: passed-year
+    //add age to running total
+    const totalYears = inventors.reduce((total, inventor)=>{
+      // console.log(`Total: ${total}`);
+      // console.log(`${inventor.first} ${inventor.last}: ${inventor.passed-inventor.year}`);
+      return total + (inventor.passed-inventor.year);
+    },0);
+
+    console.log(totalYears);
 
     // 5. Sort the inventors by years lived
+    //create an array of the name and years lived
+    const nameYearsLivedArr = inventors.map((inventor)=>{ 
+      return { name:`${inventor.first} ${inventor.last}`, 
+      age: (inventor.passed-inventor.year)};
+
+    });
+
+    console.log(nameYearsLivedArr);
+    //sort that array by years lived
+    nameYearsLivedArr.sort((a,b)=> {return a.age-b.age});
+    console.log(nameYearsLivedArr);
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
@@ -59,10 +95,25 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    const lastNameArr = inventors;
+    lastNameArr.sort((a,b)=>{
+      const aName = a.last.toLowerCase();
+      const bName = b.last.toLowerCase();
+      if (aName < bName){
+        return -1;
+      } else if (aName > bName){
+        return 1;
+      }
+      return 0;
+    });
+
+    console.log(lastNameArr)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+
+    console.log(data.sort());
 
   </script>
 </body>

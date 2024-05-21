@@ -25,9 +25,18 @@
       { text: 'Nice Nice Nice!', id: 542328 }
     ];
 
+    let olderThan19 = (person) => {
+      let currentYear = new Date().getFullYear();
+      // console.log(currentYear);
+      console.log(currentYear- person.year);
+      if(currentYear - person.year >= 19) return true;
+    }
+
     // Some and Every Checks
     // Array.prototype.some() // is at least one person 19 or older?
+    console.log(people.some(olderThan19));
     // Array.prototype.every() // is everyone 19 or older?
+    console.log(people.every(olderThan19));
 
     // Array.prototype.find()
     // Find is like filter, but instead returns just the one you are looking for
